@@ -2,8 +2,9 @@ import React,{useContext} from 'react'
 import Toast from 'react-bootstrap/Toast'
 import {GithubContext} from "../helpers/context"
 
+//Component to show error message incase any error occurs during fetching data
 function Error() {
-    const{setShowError}=useContext(GithubContext)
+  const{setShowError,errorMssg}=useContext(GithubContext)
   return (
     <Toast id="error"className="errorMssg m-1" bg="danger" onClose={() => setShowError(false)} delay={3000} autohide>
       <Toast.Header>
@@ -11,7 +12,7 @@ function Error() {
         <strong className="me-auto">Error!</strong>
       </Toast.Header>
       <Toast.Body className='text-white'>
-        OOPS! Some error occured, please try again.
+       {errorMssg}
       </Toast.Body>
     </Toast>
   )

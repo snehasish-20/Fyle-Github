@@ -1,7 +1,8 @@
 import React from 'react'
 import Spinner from 'react-bootstrap/Spinner'
-function Loading
-() {
+
+//Component to show a loading screen while fetching data
+function Loading() {
   return (
     <div id="loading">
         <Spinner animation="border" variant="primary" id="spinner"/>

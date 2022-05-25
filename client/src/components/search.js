@@ -3,16 +3,17 @@ import {GithubContext} from "../helpers/context"
 import { Button,InputGroup,FormControl } from 'react-bootstrap';
 import logo from '../images/logo.png'
 
+//component to take an username as input and then search for its data
 function Search() {
-    //using context
-    const{userName,setUserName,setShowDashBoard,setLoading}=useContext(GithubContext)
+    //using context for managing different states
+    const{userName,setUserName,setShowDashBoard,setLoading,setShowError,setErrorMssg}=useContext(GithubContext)
 
-    const search=()=>
-    {
-        if(userName==="")
-         alert("Please enter valid user name")
-        else
-        {
+    const search=()=>{
+        if(userName===""){ //validating user name
+            setErrorMssg("Please enter valid user name")
+            setShowError(true)
+        }
+        else{
             setLoading(true)
             setShowDashBoard(true)
         }

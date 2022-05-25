@@ -11,6 +11,8 @@ if (process.env.NODE_ENV === "production") {
     app.use(express.static("client/build"));
   }
 
+
+//To fetch the repositories of a particular user
 app.get("/userrepositories",(req,res)=>{
     const page=req.query.page
     const userName=req.query.username
@@ -25,8 +27,8 @@ app.get("/userrepositories",(req,res)=>{
     .then(function (response) {
     var repoList=response.data.slice(startIndex,endIndex)
     var data = {
-        TotalRepo: response.data.length,
-        RepoList: repoList
+        TotalRepo: response.data.length, //Adding total no of repositories of a particular user to the response
+        RepoList: repoList //adding details of all the repositories of user to the response
 }
         res.send(JSON.stringify(data));
     })
@@ -36,6 +38,7 @@ app.get("/userrepositories",(req,res)=>{
     
 })
 
+//to fetch the details about a particular user
 app.get("/userdetails",(req,res)=>{
     const userName=req.query.username
     let url = `https://api.github.com/users/${userName}`;

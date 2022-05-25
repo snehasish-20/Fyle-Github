@@ -2,9 +2,12 @@ import axios from 'axios'
 import React, { useEffect, useState,useContext } from 'react'
 import {GithubContext} from "../helpers/context"
 
+//Component to fetch user data and display them
 function UserInfo({userName}) {
-    const{loading,setLoading,setShowError,setShowDashBoard}=useContext(GithubContext)
-    const [userDetails,setUserDetails]=useState();
+    const{setLoading,setShowError,setShowDashBoard,setErrorMssg}=useContext(GithubContext)
+    const [userDetails,setUserDetails]=useState(); //to store data about a particular user
+
+    //to fetch user deatails when username changes
     useEffect(() => {
       axios.get(`/userdetails?username=${userName}`).then((result)=>{
       setLoading(false)
@@ -12,6 +15,7 @@ function UserInfo({userName}) {
     }).catch(function (error) {
       console.log(error);
       setShowDashBoard(false)
+      setErrorMssg("OOPS! Something went wrong, please try again.")
       setShowError(true)
       setLoading(false)
   });
@@ -26,7 +30,6 @@ function UserInfo({userName}) {
       <h6>Followers: {userDetails?.followers} Following: {userDetails?.followers}</h6>
       <p>{userDetails?.bio}</p>
       <a href={userDetails?.html_url} target="_blank" rel="noopener noreferrer">{userDetails?.html_url}</a>
-
     </div>
   )
 }
