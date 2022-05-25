@@ -6,7 +6,7 @@ function UserInfo({userName}) {
     const{loading,setLoading,setShowError,setShowDashBoard}=useContext(GithubContext)
     const [userDetails,setUserDetails]=useState();
     useEffect(() => {
-      axios.get(`http://localhost:3000/userdetails?username=${userName}`).then((result)=>{
+      axios.get(`/userdetails?username=${userName}`).then((result)=>{
       setLoading(false)
       setUserDetails(result.data);
     }).catch(function (error) {

@@ -9,7 +9,7 @@ function RepositoryList({userName}) {
     const [repositories,setRepositories]=useState();
     const [totalRepositories,setTotalRepositories]=useState();
     useEffect(() => {
-      axios.get(`http://localhost:3000/userrepositories?username=${userName}&page=${page}`).then((result)=>{
+      axios.get(`/userrepositories?username=${userName}&page=${page}`).then((result)=>{
       setRepositories(result.data.RepoList);
       setTotalRepositories(result.data.TotalRepo)
       setLoading(false)
