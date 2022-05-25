@@ -10,7 +10,6 @@ function UserInfo({userName}) {
     //to fetch user deatails when username changes
     useEffect(() => {
       axios.get(`/userdetails?username=${userName}`).then((result)=>{
-      setLoading(false)
       setUserDetails(result.data);
     }).catch(function (error) {
       console.log(error);
