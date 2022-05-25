@@ -25,7 +25,7 @@ function UserInfo({userName}) {
     <div id="userProfile">
       <img src={userDetails?.avatar_url}alt="snehasish" id="userImage" />  
       <h2>{userDetails?.name}</h2>
-      <h3>{userDetails?.login}</h3>
+      <h3 id="username">{userDetails?.login}</h3>
       <h6>Followers: {userDetails?.followers} Following: {userDetails?.followers}</h6>
       <p>{userDetails?.bio}</p>
       <a href={userDetails?.html_url} target="_blank" rel="noopener noreferrer">{userDetails?.html_url}</a>
